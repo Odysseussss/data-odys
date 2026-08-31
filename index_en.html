@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ulisses de Pinho - Data Analytics</title>
+  <meta name="description"
+    content="Ulisses de Pinho's Portfolio: Data Analyst transitioning to Data Science. Microsoft Fabric, PySpark, Power BI, and AI." />
+  <meta name="author" content="Ulisses de Pinho Rodrigues Neto" />
+
+  <meta property="og:title" content="Ulisses de Pinho — Data Scientist & Analytics Engineer" />
+  <meta property="og:description"
+    content="Transforming complex data into strategic decisions with Microsoft Fabric, PySpark, and predictive AI." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        container: {
+          center: true,
+          padding: {
+            DEFAULT: "1rem",
+            sm: "1.25rem",
+            lg: "2rem",
+          },
+          screens: {
+            "2xl": "1400px",
+          },
+        },
+        extend: {
+          colors: {
+            border: "hsl(var(--border))",
+            input: "hsl(var(--input))",
+            ring: "hsl(var(--ring))",
+            background: "hsl(var(--background))",
+            foreground: "hsl(var(--foreground))",
+            primary: {
+              DEFAULT: "hsl(var(--primary))",
+              foreground: "hsl(var(--primary-foreground))",
+            },
+            secondary: {
+              DEFAULT: "hsl(var(--secondary))",
+              foreground: "hsl(var(--secondary-foreground))",
+            },
+            destructive: {
+              DEFAULT: "hsl(var(--destructive))",
+              foreground: "hsl(var(--destructive-foreground))",
+            },
+            muted: {
+              DEFAULT: "hsl(var(--muted))",
+              foreground: "hsl(var(--muted-foreground))",
+            },
+            accent: {
+              DEFAULT: "hsl(var(--accent))",
+              foreground: "hsl(var(--accent-foreground))",
+            },
+            card: {
+              DEFAULT: "hsl(var(--card))",
+              foreground: "hsl(var(--card-foreground))",
+            },
+          },
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          backgroundImage: {
+            'gradient-hero': 'var(--gradient-hero)',
+            'gradient-primary': 'var(--gradient-primary)',
+            'gradient-accent': 'var(--gradient-accent)',
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="min-h-screen overflow-x-hidden bg-background text-foreground antialiased">
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- NAV -->
+  <nav class="fixed inset-x-0 top-0 z-10 glass">
+    <div class="container flex max-w-6xl items-center justify-between py-2">
+      <a href="#hero" class="font-mono text-sm font-bold tracking-[0.2em] text-gradient">
+        Ulisses.Analytics
+      </a>
+
+      <div class="hidden items-center gap-6 font-mono text-[11px] tracking-[0.18em] text-muted-foreground md:flex">
+        <a href="#about" class="transition-colors hover:text-primary">ABOUT</a>
+        <a href="#projects" class="transition-colors hover:text-primary">PROJECTS</a>
+        <a href="#stack" class="transition-colors hover:text-primary">STACK</a>
+        <a href="#cv" class="transition-colors hover:text-primary">JOURNEY</a>
+        <a href="#contact" class="transition-colors hover:text-primary">CONTACT</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div
+          class="hidden items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 font-mono text-[10px] tracking-[0.15em] text-primary sm:flex">
+          <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
+          OPEN TO WORK
+        </div>
+        <a href="index.html"
+          class="flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1 font-mono text-[11px] text-muted-foreground transition-colors hover:text-primary hover:border-primary/50">
+          <svg class="h-3.5 w-3.5 rounded-full ring-1 ring-border" viewBox="0 0 24 24" aria-hidden="true">
+            <clipPath id="flag-br-nav"><circle cx="12" cy="12" r="12" /></clipPath>
+            <g clip-path="url(#flag-br-nav)">
+              <rect width="24" height="24" fill="#009B3A" />
+              <path d="M12 4.2 20.4 12 12 19.8 3.6 12Z" fill="#FEDF00" />
+              <circle cx="12" cy="12" r="4.1" fill="#002776" />
+              <path d="M8.1 11c2.6 2 5.2 2 7.8.1v1.7c-2.6 2-5.2 1.9-7.8-.1z" fill="#F0F0F0" />
+            </g>
+          </svg>
+          PT
+        </a>
+        <button id="menu-toggle" type="button" aria-label="Open menu"
+          class="rounded-lg border border-border p-2 text-muted-foreground md:hidden">
+          <!-- Hamburger SVG -->
+          <svg id="icon-menu" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <!-- Close SVG -->
+          <svg id="icon-close" class="hidden h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu"
+      class="hidden container flex max-w-6xl flex-col gap-3 border-t border-border py-4 font-mono text-xs tracking-[0.18em] text-muted-foreground md:hidden">
+      <a href="#about" class="transition-colors hover:text-primary">ABOUT</a>
+      <a href="#projects" class="transition-colors hover:text-primary">PROJECTS</a>
+      <a href="#stack" class="transition-colors hover:text-primary">STACK</a>
+      <a href="#cv" class="transition-colors hover:text-primary">JOURNEY</a>
+      <a href="#contact" class="transition-colors hover:text-primary">CONTACT</a>
+      <a href="index.html" class="flex items-center gap-2 text-primary">
+        <svg class="h-3.5 w-3.5 rounded-full ring-1 ring-border" viewBox="0 0 24 24" aria-hidden="true">
+          <clipPath id="flag-br-mobile"><circle cx="12" cy="12" r="12" /></clipPath>
+          <g clip-path="url(#flag-br-mobile)">
+            <rect width="24" height="24" fill="#009B3A" />
+            <path d="M12 4.2 20.4 12 12 19.8 3.6 12Z" fill="#FEDF00" />
+            <circle cx="12" cy="12" r="4.1" fill="#002776" />
+            <path d="M8.1 11c2.6 2 5.2 2 7.8.1v1.7c-2.6 2-5.2 1.9-7.8-.1z" fill="#F0F0F0" />
+          </g>
+        </svg>
+        SWITCH TO PT
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16">
+    <div class="absolute inset-0 bg-grid opacity-30"></div>
+    <div class="absolute inset-0 bg-gradient-hero"></div>
+
+    <div class="container relative grid max-w-6xl items-center gap-12 lg:grid-cols-2">
+      <div class="animate-fade-up">
+        <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
+          Thanks for checking out my portfolio :)
+        </p>
+        <h1 class="mt-6 text-4xl font-bold leading-[0.95] tracking-tight sm:text-6xl xl:text-7xl">
+          DATA ANALYST <br />
+          <span class="text-gradient">(Mid-level)</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          DataViz & Data Engineering Specialist with 3 years of experience. Passionate about the data world.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#projects"
+            class="rounded-full bg-gradient-primary px-6 py-3 font-mono text-xs font-semibold tracking-[0.15em] text-primary-foreground transition-opacity hover:opacity-90 glow-primary">
+            VIEW PROJECTS →
+          </a>
+          <a href="assets/Ulisses de Pinho - Cv Atualizado.pdf" download
+            class="rounded-full border border-border px-6 py-3 font-mono text-xs tracking-[0.15em] text-foreground transition-colors hover:border-primary/60 hover:text-primary">
+            &gt;_ OPEN RESUME
+          </a>
+        </div>
+      </div>
+
+      <!-- Status card with photo -->
+      <div class="relative mx-auto w-full max-w-sm animate-float">
+        <span class="absolute -left-8 top-6 h-24 w-24 rounded-full border border-primary/40"></span>
+        <span class="absolute -right-6 bottom-10 h-16 w-16 rounded-full bg-secondary/20 blur-xl"></span>
+        <span class="absolute -right-10 top-16 h-10 w-10 rotate-12 rounded-lg border border-accent/40"></span>
+        <span class="absolute -bottom-6 left-10 h-32 w-32 rounded-full bg-primary/20 blur-3xl"></span>
+
+        <div
+          class="relative overflow-hidden rounded-[2rem] border border-primary/30 bg-card/70 p-3 backdrop-blur-xl shadow-[0_0_90px_hsl(var(--primary)/0.15)]">
+          <img src="assets/photo2.png" alt="Ulisses de Pinho Rodrigues Neto, Data Analyst"
+            class="h-[26rem] w-full rounded-[1.5rem] object-cover object-top" />
+          <div
+            class="absolute inset-x-3 bottom-3 rounded-2xl border border-border bg-background/80 p-4 font-mono text-[11px] backdrop-blur-xl">
+            <div class="mb-2 flex items-center gap-2 text-primary">
+              <span class="h-2 w-2 rounded-full bg-primary shadow-[0_0_14px_hsl(var(--primary))]"></span>
+              Mid-Level Data Analyst · Pará/Brazil
+            </div>
+            <div class="flex flex-wrap gap-2 text-muted-foreground">
+              <span class="text-secondary">SQL</span>·
+              <span class="text-primary">Power BI</span>·
+              <span class="text-accent">Python</span>·
+              <span class="text-secondary">Fabric</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16 md:py-24 reveal">
+    <div class="container max-w-6xl">
+      <h2 class="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">
+        About me
+      </h2>
+
+      <div class="mt-10 grid gap-10 md:grid-cols-[1.4fr_1fr]">
+        <div class="space-y-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p>
+            My name is <b class="text-foreground">Ulisses de Pinho</b>, I am 23 years old and a
+            <span class="text-primary">Mid-Level Data Analyst</span> with 3
+            years of experience. My first Python "Hello World" was at age 14,
+            and since then, I've been continuously specializing in the data world.
+          </p>
+          <p>
+            I've worked across Technology, BI Systems & ERPs, logistics, and consumer goods & pharmaceutical distributors,
+            specializing in
+            <span class="text-primary">Power BI, the Microsoft ecosystem (Fabric/Azure), and Oracle</span>,
+            alongside open-source systems like Airflow and Docker.
+          </p>
+          <p>
+            I move fluidly between front-end, back-end, and infrastructure. I believe a great professional should be a
+            specialist in something while understanding a bit of everything.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <info-card title="HIGHER EDUCATION">
+            <p class="text-sm font-semibold">Systems Analysis and Development</p>
+            <p class="text-xs text-muted-foreground">Estácio de Sá University · 2020–2023</p>
+          </info-card>
+          <info-card title="COURSES" color="text-accent">
+            <ul class="space-y-2 text-xs text-muted-foreground">
+              <li>Advanced Power BI + SQL Server · Yto Nihon 2026</li>
+              <li>Data Track · Oracle Next Education 2025</li>
+              <li>Data Engineering Fundamentals · Data Science Academy 2024</li>
+            </ul>
+          </info-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-16 md:py-24 reveal">
+    <div class="container max-w-6xl">
+      <div
+        class="mb-5 flex items-center justify-between gap-4 border-b border-border pb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+      </div>
+      <h2 class="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">
+        Where analysis, engineering, and <span class="text-gradient">AI</span> meet.
+      </h2>
+      <p class="mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
+        Each project below solves a real business problem — from inventory to
+        commercial routes, from legacy reports to predictive models.
+      </p>
+
+      <!-- Tags / Filters -->
+      <div class="mt-8 flex flex-wrap gap-2">
+        <button type="button" data-tag="TODOS"
+          class="tag-btn rounded-full border border-primary bg-primary/15 px-4 py-1.5 font-mono text-[11px] tracking-[0.15em] text-primary transition-all hover:border-primary/40 hover:text-primary">
+          ALL
+        </button>
+        <button type="button" data-tag="BI"
+          class="tag-btn rounded-full border border-border px-4 py-1.5 font-mono text-[11px] tracking-[0.15em] text-muted-foreground transition-all hover:border-primary/40 hover:text-primary">
+          BI
+        </button>
+        <button type="button" data-tag="PREDITIVO"
+          class="tag-btn rounded-full border border-border px-4 py-1.5 font-mono text-[11px] tracking-[0.15em] text-muted-foreground transition-all hover:border-primary/40 hover:text-primary">
+          PREDICTIVE
+        </button>
+        <button type="button" data-tag="ENGENHARIA"
+          class="tag-btn rounded-full border border-border px-4 py-1.5 font-mono text-[11px] tracking-[0.15em] text-muted-foreground transition-all hover:border-primary/40 hover:text-primary">
+          ENGINEERING
+        </button>
+        <button type="button" data-tag="AUTOMAÇÃO"
+          class="tag-btn rounded-full border border-border px-4 py-1.5 font-mono text-[11px] tracking-[0.15em] text-muted-foreground transition-all hover:border-primary/40 hover:text-primary">
+          AUTOMATION
+        </button>
+      </div>
+
+      <!-- Project Cards -->
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <project-card tag="BI" title="Targit → Power BI Migration" tech="Power BI · DAX · Data Factory" image="assets/foto_time.png">
+          We completed the migration in October 2025 and on 03/11/2025 our team presented the first reports to Okajima's commercial team. We cut engineering costs by 50% and reduced report delivery time by 70%. (DAX is Incredible)
+          <p class="mt-4 text-xs text-muted-foreground">
+            <span class="font-mono text-[10px] tracking-[0.15em] text-primary">Team:</span>
+            <span>Celso Leite</span>, 
+            <a href="https://martavieira.lovable.app/#projetos" target="_blank" rel="noreferrer" class="text-foreground underline underline-offset-4 transition-colors hover:text-primary">Marta Júlia</a>
+          </p>
+        </project-card>
+
+        <project-card tag="PREDITIVO" title="Demand Forecasting" tech="Python · Pandas · Scikit-learn">
+          Time series models to anticipate sales volume by product line, reducing stockouts and inventory excess in distribution.
+        </project-card>
+
+        <project-card tag="BI" title="Campaign Performance" tech="Power BI · SQL · Excel">
+          Commercial campaign tracking dashboard featuring goals, RCA rankings, and automated bonus calculation.
+        </project-card>
+
+        <project-card tag="ENGENHARIA" title="Commercial Lakehouse" tech="Microsoft Fabric · PySpark · Delta">
+          Bronze/silver/gold layers in Fabric, with PySpark notebooks orchestrating transactional data ingestion and cleaning.
+        </project-card>
+
+        <project-card tag="PREDITIVO" title="Route Optimization" tech="Python · Geodata · Power BI">
+          Geospatial analysis to reorganize RCA portfolios by proximity and purchase potential, increasing effective visits.
+        </project-card>
+
+        <project-card tag="AUTOMAÇÃO" title="AI-Powered Automation" tech="Python · LLM · Docker">
+          Routines that interpret reports and generate automated executive summaries delivered directly to managers.
+        </project-card>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack" class="py-16 md:py-24 reveal">
+    <div class="container max-w-6xl">
+      <div
+        class="mb-5 flex items-center justify-between gap-4 border-b border-border pb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+      </div>
+      <h2 class="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">
+        Tech <span class="text-gradient">Stack</span>.
+      </h2>
+      <p class="mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
+
+      </p>
+
+      <div class="mt-10 space-y-8">
+        <!-- Grupo 1 -->
+        <div>
+          <div class="mb-5 flex items-center gap-2">
+            <h3 class="font-mono text-[11px] tracking-[0.2em] text-primary">PLATFORMS & TOOLS</h3>
+            <span class="h-px flex-1 bg-gradient-to-r from-primary/40 to-transparent"></span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+            <tech-card icon="assets/microsoft-fabric.svg" name="Microsoft Fabric"></tech-card>
+            <tech-card icon="assets/power-bi.svg" name="Power BI"></tech-card>
+            <tech-card icon="assets/tech-icons/data-factories.svg" name="Azure Data Factory"></tech-card>
+            <tech-card icon="assets/tech-icons/tabular3.svg" name="Tabular Editor"></tech-card>
+            <tech-card icon="assets/tech-icons/oracle.svg" name="Oracle Database"></tech-card>
+            <tech-card icon="assets/tech-icons/SQL-Developer.svg" name="SQL Developer"></tech-card>
+            <tech-card icon="assets/tech-icons/airflow.svg" name="Airflow"></tech-card>
+            <tech-card icon="assets/tech-icons/docker.svg" name="Docker"></tech-card>
+            <tech-card icon="assets/tech-icons/excel.svg" name="Excel"></tech-card>
+            <tech-card icon="assets/tech-icons/figma.svg" name="Figma"></tech-card>
+          </div>
+
+          <!-- Grupo 2 -->
+          <div>
+            <div class="mb-5 flex items-center gap-10 mt-8">
+              <h3 class="font-mono text-[11px] tracking-[0.2em] text-primary">LANGUAGES & LIBRARIES</h3>
+              <span class="h-px flex-1 bg-gradient-to-r from-primary/40 to-transparent"></span>
+            </div>
+            <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+              <tech-card icon="assets/tech-icons/python.svg" name="Python"></tech-card>
+              <tech-card icon="assets/tech-icons/sql.svg" name="SQL"></tech-card>
+              <tech-card icon="assets/tech-icons/pandas.svg" name="Pandas"></tech-card>
+              <tech-card icon="assets/tech-icons/numpy.svg" name="NumPy"></tech-card>
+              <tech-card icon="assets/tech-icons/pyspark.svg" name="PySpark"></tech-card>
+              <tech-card icon="assets/tech-icons/streamlit.svg" name="Streamlit"></tech-card>
+              <tech-card icon="assets/tech-icons/dax_lib.svg" name="DAX Lib"></tech-card>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section id="cv" class="py-16 md:py-24 reveal">
+    <div class="container max-w-6xl">
+      <div
+        class="mb-5 flex items-center justify-between gap-4 border-b border-border pb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+      </div>
+      <h2 class="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">
+        My journey so <span class="text-gradient">far</span>.
+      </h2>
+
+      <div class="mt-10 space-y-8 border-l border-border pl-8">
+        <!-- Item 1 -->
+        <div class="relative">
+          <span class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-primary"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-primary">2025 — Present</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Mid-Level Data Analyst · Okajima Distribuidora</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Back-end development of write-back systems for campaign registration and automated calculation.
+          </p>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="relative">
+          <span
+            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-secondary"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-secondary">2025</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Junior Data Analyst · Okajima Distribuidora</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Dashboards, reports, and calculations for campaigns and commercial contracts, plus migration from Targit (legacy BI system) to Power BI.
+          </p>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="relative">
+          <span class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-accent"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-accent">2024</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Data Assistant · Okajima Distribuidora</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Commercial route optimization, connecting RCAs to clients more efficiently.
+          </p>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="relative">
+          <span
+            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-muted-foreground"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">2022 — 2024</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Support & Products · Sea Telecom</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            N1/N2 technical support in complex networks, management of Matrix and MK Solutions platforms, and equipment homologation.
+          </p>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="relative">
+          <span
+            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-muted-foreground"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">2021 — 2022</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Administrative Apprentice · Nazária Distribuidora</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Spreadsheets, data organization, and the first commercial calculations — where it all began.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-10 font-mono text-xs text-muted-foreground">
+        Access full resume:
+        <a href="assets/Ulisses de Pinho - Cv Atualizado.pdf" download
+          class="text-primary underline underline-offset-4">
+          download PDF ↗
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 md:py-24 border-t border-border reveal">
+    <div class="container max-w-6xl">
+      <div
+        class="mb-5 flex items-center justify-between gap-4 border-b border-border pb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+        <span>contact</span>
+        <span class="text-right">get in touch</span>
+      </div>
+      <h2 class="text-3xl font-bold leading-tight sm:text-5xl">
+        Let's work <span class="text-gradient">together</span>?
+      </h2>
+
+      <div class="mt-10 grid gap-10 md:grid-cols-2">
+        <div class="flex flex-wrap items-center gap-6 font-mono text-sm">
+          <a href="mailto:Ulisses.principal@gmail.com"
+            class="block text-muted-foreground transition-colors hover:text-primary">
+            ✉ Ulisses.principal@gmail.com
+          </a>
+          <a href="tel:+5591984609212" class="block text-muted-foreground transition-colors hover:text-primary">
+            ☎ +55 (91) 98460-9212
+          </a>
+          <a href="https://github.com/Odysseussss" target="_blank" rel="noreferrer"
+            class="block text-muted-foreground transition-colors hover:text-primary">
+            ◐ github.com/Odysseussss
+          </a>
+          <a href="https://www.linkedin.com/in/ulisses-de-pinho/" target="_blank" rel="noreferrer"
+            class="block text-muted-foreground transition-colors hover:text-primary">
+            ◑ linkedin.com/in/ulisses-de-pinho
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-border py-8">
+    <div
+      class="container flex max-w-6xl flex-col items-center justify-between gap-3 font-mono text-[11px] text-muted-foreground md:flex-row">
+      <p>© 2026 Ulisses de Pinho · Crafted with data &amp; coffee</p>
+      <p class="text-primary">&lt;data /&gt;</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+
+</html>

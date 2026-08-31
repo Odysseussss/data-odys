@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --background: 230 25% 6%;
+  --foreground: 180 15% 95%;
+
+  --card: 230 25% 9%;
+  --card-foreground: 180 15% 95%;
+
+  --popover: 230 25% 9%;
+  --popover-foreground: 180 15% 95%;
+
+  --primary: 158 90% 55%;
+  --primary-foreground: 230 25% 6%;
+  --primary-glow: 158 100% 70%;
+
+  --secondary: 270 80% 65%;
+  --secondary-foreground: 230 25% 6%;
+
+  --muted: 230 20% 14%;
+  --muted-foreground: 220 10% 60%;
+
+  --accent: 190 95% 60%;
+  --accent-foreground: 230 25% 6%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 230 20% 18%;
+  --input: 230 20% 18%;
+  --ring: 158 90% 55%;
+
+  --radius: 1rem;
+
+  --gradient-hero: radial-gradient(ellipse at top left, hsl(158 90% 55% / 0.18), transparent 55%),
+                   radial-gradient(ellipse at bottom right, hsl(270 80% 65% / 0.18), transparent 55%),
+                   radial-gradient(ellipse at center, hsl(190 95% 60% / 0.08), transparent 70%);
+  --gradient-primary: linear-gradient(135deg, hsl(158 90% 55%), hsl(190 95% 60%));
+  --gradient-accent: linear-gradient(135deg, hsl(270 80% 65%), hsl(190 95% 60%));
+  --gradient-text: linear-gradient(135deg, hsl(158 100% 70%), hsl(190 95% 70%), hsl(270 80% 75%));
+
+  --shadow-glow: 0 0 60px hsl(158 90% 55% / 0.35);
+  --shadow-card: 0 20px 60px -20px hsl(230 50% 2% / 0.6);
+  --shadow-accent: 0 0 80px hsl(270 80% 65% / 0.4);
+
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Space Grotesk', sans-serif;
+  background-image:
+    radial-gradient(circle at 20% 10%, hsl(158 90% 55% / 0.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, hsl(270 80% 65% / 0.08), transparent 40%);
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.glow-primary {
+  box-shadow: var(--shadow-glow);
+}
+
+.glow-accent {
+  box-shadow: var(--shadow-accent);
+}
+
+.glass {
+  background: hsl(230 25% 9% / 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 40px hsl(158 90% 55% / 0.4); }
+  50% { box-shadow: 0 0 80px hsl(158 90% 55% / 0.7); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.8s ease-out both; }
+
+/* Scroll reveal classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all 0.7s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, hsl(158 90% 55%), hsl(190 95% 60%), hsl(270 80% 65%));
+  z-index: 50;
+  transform-origin: 0%;
+  transform: scaleX(0);
+  transition: transform 0.1s ease-out;
+}
+
+@media (max-width: 767px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .bg-grid {
+    background-size: 40px 40px;
+  }
+
+  .glass {
+    background: hsl(230 25% 9% / 0.85);
+  }
+
+  .text-gradient {
+    filter: saturate(1.2);
+  }
+}
