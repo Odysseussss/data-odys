@@ -160,3 +160,38 @@ body {
     filter: saturate(1.2);
   }
 }
+
+/* Animação do Dialog Nativo */
+dialog.project-dialog {
+  background: transparent;
+  border: none;
+  padding: 1rem;
+  margin: auto;
+}
+
+/* Estado Fechado */
+dialog.project-dialog .dialog-content {
+  transform: scale(0.85);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+dialog.project-dialog::backdrop {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Estado Aberto (Animação "Para Frente") */
+dialog.project-dialog[open] .dialog-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+dialog.project-dialog[open]::backdrop {
+  opacity: 1;
+}
+
+/* Previne scroll na página principal quando aberto */
+body.modal-open {
+  overflow: hidden;
+}
