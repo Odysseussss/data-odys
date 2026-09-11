@@ -40,6 +40,31 @@ if (menuToggle && mobileMenu) {
   });
 }
 
+// LinkedIn floating profile widget
+const linkedInWidget = document.querySelector('[data-linkedin-widget]');
+if (linkedInWidget) {
+  const linkedInToggle = linkedInWidget.querySelector('.linkedin-widget__toggle');
+  const linkedInPanel = linkedInWidget.querySelector('.linkedin-widget__panel');
+  const linkedInClose = linkedInWidget.querySelector('.linkedin-widget__close');
+
+  const setLinkedInExpanded = (expanded) => {
+    linkedInToggle.setAttribute('aria-expanded', String(expanded));
+    linkedInPanel.hidden = !expanded;
+    linkedInWidget.classList.toggle('is-expanded', expanded);
+  };
+
+  linkedInToggle.addEventListener('click', () => {
+    setLinkedInExpanded(linkedInPanel.hidden);
+  });
+  linkedInClose.addEventListener('click', () => setLinkedInExpanded(false));
+  document.addEventListener('click', (event) => {
+    if (!linkedInWidget.contains(event.target)) setLinkedInExpanded(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setLinkedInExpanded(false);
+  });
+}
+
 // Scroll Reveal Observer
 const revealElements = document.querySelectorAll('.reveal');
 if (revealElements.length > 0) {

@@ -500,7 +500,29 @@
     </div>
   </footer>
 
+  <aside class="linkedin-widget" data-linkedin-widget>
+    <button class="linkedin-widget__toggle" type="button" aria-expanded="false" aria-controls="linkedin-panel"
+      aria-label="Open LinkedIn profile">
+      <span class="linkedin-widget__icon" aria-hidden="true">in</span>
+      <span class="linkedin-widget__label">LinkedIn</span>
+    </button>
+    <div id="linkedin-panel" class="linkedin-widget__panel" hidden>
+      <div class="linkedin-widget__heading">
+        <span class="linkedin-widget__eyebrow">Let's connect</span>
+        <button class="linkedin-widget__close" type="button" aria-label="Close LinkedIn profile">×</button>
+      </div>
+      <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark"
+        data-type="VERTICAL" data-vanity="ulisses-de-pinho" data-version="v1">
+        <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/ulisses-de-pinho?trk=profile-badge"
+          target="_blank" rel="noreferrer">Ulisses De Pinho</a>
+      </div>
+      <a class="linkedin-widget__profile-link" href="https://www.linkedin.com/in/ulisses-de-pinho?trk=profile-badge"
+        target="_blank" rel="noreferrer">View LinkedIn profile ↗</a>
+    </div>
+  </aside>
+
   <!-- Script -->
+  <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
   <script src="script.js"></script>
 </body>
 
