@@ -140,39 +140,18 @@
         </button>
       </div>
     </div>
-
-    <!-- Mobile dropdown -->
-    <div id="mobile-menu"
-      class="hidden container flex max-w-6xl flex-col gap-3 border-t border-border py-4 font-mono text-xs tracking-[0.18em] text-muted-foreground md:hidden">
-      <a href="#about" class="transition-colors hover:text-primary">SOBRE</a>
-      <a href="#projects" class="transition-colors hover:text-primary">PROJETOS</a>
-      <a href="#stack" class="transition-colors hover:text-primary">STACK</a>
-      <a href="#cv" class="transition-colors hover:text-primary">JORNADA</a>
-      <a href="#contact" class="transition-colors hover:text-primary">CONTATO</a>
-      <a href="index_en.html" class="flex items-center gap-2 text-primary">
-        <svg class="h-3.5 w-3.5 rounded-full ring-1 ring-border" viewBox="0 0 24 24" aria-hidden="true">
-          <clipPath id="flag-us-mobile"><circle cx="12" cy="12" r="12" /></clipPath>
-          <g clip-path="url(#flag-us-mobile)">
-            <rect width="24" height="24" fill="#F0F0F0" />
-            <g fill="#D80027">
-              <rect y="0" width="24" height="1.85" /><rect y="3.69" width="24" height="1.85" />
-              <rect y="7.38" width="24" height="1.85" /><rect y="11.08" width="24" height="1.85" />
-              <rect y="14.77" width="24" height="1.85" /><rect y="18.46" width="24" height="1.85" />
-              <rect y="22.15" width="24" height="1.85" />
-            </g>
-            <rect x="0" y="0" width="12" height="12.92" fill="#2E52B2" />
-            <g fill="#F0F0F0">
-              <circle cx="2.4" cy="2.4" r=".8" /><circle cx="6" cy="2.4" r=".8" /><circle cx="9.6" cy="2.4" r=".8" />
-              <circle cx="4.2" cy="4.9" r=".8" /><circle cx="7.8" cy="4.9" r=".8" />
-              <circle cx="2.4" cy="7.4" r=".8" /><circle cx="6" cy="7.4" r=".8" /><circle cx="9.6" cy="7.4" r=".8" />
-              <circle cx="4.2" cy="9.9" r=".8" /><circle cx="7.8" cy="9.9" r=".8" />
-            </g>
-          </g>
-        </svg>
-        SWITCH TO EN
-      </a>
-    </div>
   </nav>
+
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu"
+    class="hidden container flex max-w-6xl flex-col gap-3 border-t border-border py-4 font-mono text-xs tracking-[0.18em] text-muted-foreground md:hidden">
+    <a href="#about" class="transition-colors hover:text-primary">SOBRE</a>
+    <a href="#projects" class="transition-colors hover:text-primary">PROJETOS</a>
+    <a href="#stack" class="transition-colors hover:text-primary">STACK</a>
+    <a href="#cv" class="transition-colors hover:text-primary">JORNADA</a>
+    <a href="#contact" class="transition-colors hover:text-primary">CONTATO</a>
+    <a href="index_en.html" class="text-primary">SWITCH TO EN</a>
+  </div>
 
   <!-- HERO -->
   <section id="hero" class="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16">
@@ -253,24 +232,131 @@
           Tenho experiência com bancos de dados Oracle e PostgreSQL, plataformas BaaS como Supabase, além de ferramentas open-source como Airflow e Docker.
         </p>
         <p>
-          Possuo experiência em metodologias ágeis como Scrum (com atuação em Sprints) e fluxos de CI/CD, além de sólida organização com Kanban e gestão de demandas em plataformas como Jira e ClickUp. Trabalho em contratações PJ ou CLT.
+          Possuo experiência em metodologias ágeis como Scrum (com atuação em Sprints) e fluxos de CI/CD, além de sólida organização com Kanban e gestão de demandas em plataformas como Jira e ClickUp. Trabalho em modalidades de contratação PJ ou CLT.
           </p>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-2">
           <info-card title="FORMAÇÃO SUPERIOR COMPLETA">
             <p class="text-sm font-semibold">Análise e Desenvolvimento de Sistemas</p>
-            <p class="text-xs text-muted-foreground">Universidade Estácio de Sá · 2020–2023</p>
+            <p class="text-xs text-muted-foreground">Universidade Estácio de Sá · Jan 2020 – jun 2023</p>
+          </info-card>
+            <info-card title="FORMAÇÃO TÉCNICA">
+            <p class="text-sm font-semibold">Serviços Administrativos</p>
+            <p class="text-xs text-muted-foreground">Senac · Abr 2021 – Mar 2022</p>
           </info-card>
           <info-card title="CURSOS" color="text-accent">
-            <ul class="space-y-2 text-xs text-muted-foreground">
-              <li>Power BI Avançado + SQL Server · Yto Nihon 2026</li>
-              <li>Formação de Dados · Oracle Next Education 2025</li>
-              <li>Fundamentos de Engenharia de Dados · Data Science Academy 2024</li>
+            <ul class="space-y-3 text-xs text-muted-foreground">
+              <li>Power BI Avançado + SQL Server · Yto Nihon 2026 - 48.5h</li>
+              <li>Formação de Dados · Oracle Next Education 2025 - 50h</li>
+              <li>Programação de Algoritmos Escaláveis · Estácio 2025 - 264h</li>
+              <li>Fundamentos de Engenharia de Dados · Data Science Academy 2024 - 24h</li>
+              <li>Gestão de Projetos & Estatística · Estácio 2023 - 100h</li>                       
             </ul>
           </info-card>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- JORNADA -->
+  <section id="cv" class="py-16 md:py-24 reveal">
+    <div class="container max-w-6xl">
+      <div
+        class="mb-5 flex items-center justify-between gap-4 border-b border-border pb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+      </div>
+      <h2 class="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">
+        Minha jornada até <span class="text-gradient">aqui</span>.
+      </h2>
+
+      <div class="mt-10 space-y-8 border-l border-border pl-8">
+        <!-- Item 1 -->
+        <div class="relative">
+          <span class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-primary"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-primary">dez de 2025 - set de 2026 · 10 meses</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Analista de Dados Pleno · Okajima Distribuidora</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          Especialista em dataViz e engenharia de Dados, atuando na criação de relatórios, dashboards avançados (Contratos, Campanhas e JBPs) e modelagem semântica com publicação via Power BI Service. 
+          Realizava consultas no banco Oracle para validação a confiabilidade e segunrança dos dados alimentados nos processos da engenheria até o Power BI.
+          Responsável pela gestão de acessos e permissões de segurança (RLS/OLS) no tenant Microsoft Fabric. Desenvolvi aplicações para dados write-back para consolidar a experiência de Self-Service BI, como o OkaCamp que automatiza cadastro e apuração de campanhas. Sou reconhecido pela entrega de painéis intuitivos e otimizados, que combinam design fluido com processamento rápido.
+          </p>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="relative">
+          <span
+            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-secondary"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-secondary">jan de 2025 - dez de 2025 · 1 ano</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Analista de Dados Júnior · Okajima Distribuidora</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Responsável por 2 das 3 Unidades de Negócio (BUs) da empresa. Desenvolvi dashboards, relatórios estratégicos e apurações de campanhas e contratos comerciais. 
+            Participei da migração do sistema legado de BI (Targit) para o Power BI, acelWrite-back
+erando a entrega de relatórios em 70% e reduzindo os custos de engenharia em 50%.
+          </p>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="relative">
+          <span class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-accent"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-accent">out de 2024 - dez de 2024 · 3 meses</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Assistente de Dados · Okajima Distribuidora</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Criação e atualização das rotas comerciais da empresa. Foco na eficiência logistica do Rca até o ponto de venda. Plataformas: ROTEIRIZZE POLIBRAS.
+          </p>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="relative">
+          <span
+            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-muted-foreground"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">out de 2023 - out de 2024 · 1 ano 1 mês</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Produtos e Serviços · Sea Telecom</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Atuação na gestão de produtos e serviços de valor agregado (SVAs), telefonia fixa (STFC) e plataformas omnichannel (Matrix Brasil).
+              Manutenção do portfólio de produtos, desde o lançamento de planos de banda larga até a homologação de equipamentos de rede (roteadores e ONUs) e gestão de parceiros e fornecedores.
+              Desenvolvimento de relatórios e dashboards estratégicos em Metabase via SQL.
+              Ministração de treinamentos sobre o ERP da empresa (MK Solutions) e documentação técnica na plataforma Wiki.js.
+          </div>
+          
+        <!-- Item 5 -->
+        <div class="relative">
+          <span
+            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-muted-foreground"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">mar de 2023 - nov de 2023 · 9 meses</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Auxiliar de SAC · Sea Telecom</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Realizava Suporte técnico avançado (N2) para clientes corporativos e residenciais com topologias de rede complexas. Auxiliei no Projeto de implementação de redes Mesh e do protocolo TR-09.          </p>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="relative">
+          <span
+            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-muted-foreground"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">ago de 2022 - mar de 2023 · 8 meses</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Estagiário de SAC · Sea Telecom</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Prestava suporte técnico N1 a todos os clientes efetuando processos cadastrais, técnicos e financeiros.
+          </p>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="relative">
+          <span
+            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-muted-foreground"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">abr de 2021 - mar de 2022 · 1 ano</p>
+          <h3 class="mt-2 text-lg font-bold leading-tight">Aprendiz Administrativo · Nazária Distribuidora</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Trabalhei em 3 setores: Trade Marketing, auxiliava na criação de planilhas de vendas e  ações comerciais; na Recepção, prestei suporte a rotinas administrativas; e na Logística, trabalhei na organização e embalagem de medicamentos.          </p>
+        </div>
+      </div>
+
+      <p class="mt-10 font-mono text-xs text-muted-foreground">
+        Acesse o currículo completo:
+        <a href="assets/Ulisses de Pinho - Cv Atualizado.pdf" download
+          class="text-primary underline underline-offset-4">
+          baixar em PDF ↗
+        </a>
+      </p>
     </div>
   </section>
 
@@ -282,142 +368,32 @@
     <h2 class="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">
       Meus <span class="text-gradient">Projetos</span>
     </h2>
-
-    <!-- Grid de Cards de Projetos -->
+    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+      Clique nos cards para saber mais informações.
+    </p>
+    <!-- Cada projeto define card, modal e galeria em um único componente. -->
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      
-      <!-- Card 1 -->
-      <div 
-        class="project-card group cursor-pointer overflow-hidden rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"
-        onclick="openProjectModal('modal-1')"
-      >
-        <div class="relative h-48 w-full overflow-hidden rounded-lg bg-muted">
-          <img src="assets/foto_time.png" alt="Migração Targit → Power BI" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <span class="absolute left-3 top-3 rounded-full bg-background/80 px-2.5 py-1 font-mono text-[10px] uppercase backdrop-blur-sm">BI</span>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-bold">Migração Targit → Power BI</h3>
-          <p class="mt-1 font-mono text-xs text-muted-foreground">Power BI · DAX · Data Factory</p>
-          <p class="mt-2 line-clamp-2 text-sm text-muted-foreground">
-            Finalizamos a migração em Outubro de 2025 e apresentamos os primeiros reports...
-          </p>
-        </div>
-      </div>
+      <project-card tag="BI" title="Migração Targit → Power BI" tech="Power BI · DAX · Data Factory" image="assets/foto_time.png" images="assets/foto_time.png">
+        <p>Finalizamos a migração em Outubro de 2025 e em 03/11/2025 nossa equipe apresentou os primeiros reports a equipe comercial da Okajima. 
+          Cortamos os custos de engenharia em 50% e reduzimos o tempo de entrega de relatórios em 70%.
+        </p>
+      </project-card>
 
-      <!-- Card 2 -->
-      <div 
-        class="project-card group cursor-pointer overflow-hidden rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"
-        onclick="openProjectModal('modal-2')"
-      >
-        <div class="relative h-48 w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center text-muted-foreground">
-          <!-- Fallback de imagem caso não tenha -->
-          <span class="font-mono text-xs">Sem Imagem</span>
-          <span class="absolute left-3 top-3 rounded-full bg-background/80 px-2.5 py-1 font-mono text-[10px] uppercase backdrop-blur-sm">Engenharia</span>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-bold">Previsão de Demanda</h3>
-          <p class="mt-1 font-mono text-xs text-muted-foreground">Python · Pandas · Scikit-learn</p>
-          <p class="mt-2 line-clamp-2 text-sm text-muted-foreground">
-            Modelos de série temporal para antecipar volume de vendas...
-          </p>
-        </div>
-      </div>
+      <project-card tag="Dashboard" title="Dashboard de Metas" tech="DataViz · PowerBI · Acompanhamento" image="assets/Blue One.png" images="assets/Blue One.png,assets/Blue Two.png">
+        <p>A tela inicial é um cockpit de indicadores-chave: KPIs de cobertura, vendas e margem de lucro, mostrando o valor vendido e o valor que já tem nota faturada. 
+          Há ScoreCards com as metas e o cálculo de MMV (Meta Mensal Variável) — um indicador-chave de forecast que divide a meta do ano pelo número de meses restantes até o fim do período. 
+          É útil para saber o ritmo de coberturas e, caso seja um valor muito alto, permitir trabalhar nisso a tempo. 
+          A segunda página conta com visões detalhadas: gráfico de tendência ao longo do tempo, detalhamento por dia da semana com mapa de calor e gráfico de rosca (donut) para acompanhar o desempenho de cada categoria.
+        </p>
+      </project-card>
 
-      <!-- Card 3 -->
-      <div 
-        class="project-card group cursor-pointer overflow-hidden rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"
-        onclick="openProjectModal('modal-3')"
-      >
-        <div class="relative h-48 w-full overflow-hidden rounded-lg bg-muted">
-          <img src="assets/fluxo_camps.png" alt="Apuração de Campanhas" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <span class="absolute left-3 top-3 rounded-full bg-background/80 px-2.5 py-1 font-mono text-[10px] uppercase backdrop-blur-sm">Write-back</span>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-bold">Apuração de Campanhas</h3>
-          <p class="mt-1 font-mono text-xs text-muted-foreground">Power BI · SQL · Excel · Oracle · ERP</p>
-          <p class="mt-2 line-clamp-2 text-sm text-muted-foreground">
-            Painel write-back de acompanhamento de campanhas comerciais...
-          </p>
-        </div>
-      </div>
-
+      <project-card tag="Write-back" title="Apuração de Campanhas" tech="Power BI · SQL · Excel · Oracle · ERP" image="assets/fluxo_camps.png" images="assets/fluxo_camps.png">
+        <p>Painel write-back de acompanhamento de campanhas comerciais com metas, ranking de RCAs e apuração automática de premiação.</p>
+        <p>O usuário cadastra a promoção/campanha e o sistema consulta as vendas no banco de dados do ERP, apura e sobe os dados de volta para o banco de dados.</p>
+      </project-card>
     </div>
   </div>
 </section>
-
-<!-- ================= MODAIS EXPANDIDOS ================= -->
-
-<!-- Modal 1 -->
-<dialog id="modal-1" class="project-dialog backdrop:bg-black/60 backdrop:backdrop-blur-sm">
-  <div class="dialog-content relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-border bg-card p-6 shadow-2xl">
-    <button onclick="closeProjectModal('modal-1')" class="absolute right-4 top-4 rounded-full bg-muted p-2 text-muted-foreground hover:bg-accent hover:text-foreground">
-      ✕
-    </button>
-    <span class="rounded-full bg-primary/10 px-3 py-1 font-mono text-xs uppercase text-primary">BI</span>
-    <h2 class="mt-3 text-2xl font-bold sm:text-3xl">Migração Targit → Power BI</h2>
-    <p class="mt-1 font-mono text-xs text-muted-foreground">Power BI · DAX · Data Factory</p>
-
-    <div class="mt-6 overflow-hidden rounded-xl bg-muted">
-      <img src="assets/foto_time.png" alt="Detalhe do projeto" class="w-full object-cover" />
-    </div>
-
-    <div class="mt-6 space-y-4 text-sm leading-relaxed text-foreground/90">
-      <p>
-        Finalizamos a migração em Outubro de 2025 e em 03/11/2025 nossa equipe apresentou os primeiros reports a equipe comercial da Okajima. Cortamos os custos de engenharia em 50% e reduzimos o tempo de entrega de relatórios em 70%. (Dax é Incrível)
-      </p>
-      <div class="rounded-lg border border-border bg-muted/40 p-4">
-        <p class="text-xs text-muted-foreground">
-          <span class="font-mono text-[10px] tracking-[0.15em] text-primary">Equipe:</span>
-          <span>Celso Leite</span>, 
-          <a href="https://martavieira.lovable.app/#projetos" target="_blank" rel="noreferrer" class="text-foreground underline underline-offset-4 transition-colors hover:text-primary">Marta Júlia</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</dialog>
-
-<!-- Modal 2 -->
-<dialog id="modal-2" class="project-dialog backdrop:bg-black/60 backdrop:backdrop-blur-sm">
-  <div class="dialog-content relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-border bg-card p-6 shadow-2xl">
-    <button onclick="closeProjectModal('modal-2')" class="absolute right-4 top-4 rounded-full bg-muted p-2 text-muted-foreground hover:bg-accent hover:text-foreground">
-      ✕
-    </button>
-    <span class="rounded-full bg-primary/10 px-3 py-1 font-mono text-xs uppercase text-primary">Engenharia</span>
-    <h2 class="mt-3 text-2xl font-bold sm:text-3xl">Previsão de Demanda</h2>
-    <p class="mt-1 font-mono text-xs text-muted-foreground">Python · Pandas · Scikit-learn</p>
-
-    <div class="mt-6 space-y-4 text-sm leading-relaxed text-foreground/90">
-      <p>
-        Modelos de série temporal para antecipar volume de vendas por linha de produto, reduzindo ruptura e excesso de estoque na distribuição.
-      </p>
-    </div>
-  </div>
-</dialog>
-
-<!-- Modal 3 -->
-<dialog id="modal-3" class="project-dialog backdrop:bg-black/60 backdrop:backdrop-blur-sm">
-  <div class="dialog-content relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-border bg-card p-6 shadow-2xl">
-    <button onclick="closeProjectModal('modal-3')" class="absolute right-4 top-4 rounded-full bg-muted p-2 text-muted-foreground hover:bg-accent hover:text-foreground">
-      ✕
-    </button>
-    <span class="rounded-full bg-primary/10 px-3 py-1 font-mono text-xs uppercase text-primary">Write-back</span>
-    <h2 class="mt-3 text-2xl font-bold sm:text-3xl">Apuração de Campanhas</h2>
-    <p class="mt-1 font-mono text-xs text-muted-foreground">Power BI · SQL · Excel · Oracle · ERP</p>
-
-    <div class="mt-6 overflow-hidden rounded-xl bg-muted">
-      <img src="assets/fluxo_camps.png" alt="Fluxo da Apuração" class="w-full object-cover" />
-    </div>
-
-    <div class="mt-6 space-y-4 text-sm leading-relaxed text-foreground/90">
-      <p>
-        Painel write-back de acompanhamento de campanhas comerciais com metas, ranking de RCAs e apuração automática de premiação. 
-      </p>
-      <p>
-        O usuário cadastra a promoção/campanha e o sistema consulta as vendas no banco de dados do ERP, apura e sobe os dados de volta para o banco de dados. O PowerBI lê as tabelas de premiações em um dashboard intuitivo.
-      </p>
-    </div>
-  </div>
-</dialog>
 
   <!-- STACK -->
   <section id="stack" class="py-16 md:py-24 reveal">
@@ -426,7 +402,7 @@
         class="mb-5 flex items-center justify-between gap-4 border-b border-border pb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
       </div>
       <h2 class="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">
-        <span class="text-gradient">Stack</span> Técnica.
+        <span class="text-gradient">Stack</span> Técnica
       </h2>
       <p class="mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
 
@@ -470,106 +446,6 @@
           </div>
         </div>
       </div>
-  </section>
-
-  <!-- JORNADA -->
-  <section id="cv" class="py-16 md:py-24 reveal">
-    <div class="container max-w-6xl">
-      <div
-        class="mb-5 flex items-center justify-between gap-4 border-b border-border pb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-      </div>
-      <h2 class="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">
-        Minha jornada até <span class="text-gradient">aqui</span>.
-      </h2>
-
-      <div class="mt-10 space-y-8 border-l border-border pl-8">
-        <!-- Item 1 -->
-        <div class="relative">
-          <span class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-primary"></span>
-          <p class="font-mono text-[11px] tracking-[0.2em] text-primary">dez de 2025 - set de 2026 · 10 meses</p>
-          <h3 class="mt-2 text-lg font-bold leading-tight">Analista de Dados Pleno · Okajima Distribuidora</h3>
-          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Especialista em dataViz e engenharia de Dados, atuando na criação de relatórios, dashboards avançados (Contratos, Campanhas e JBPs) e modelagem semântica com publicação via Power BI Service. 
-          Realizava consultas no banco Oracle para validação a confiabilidade e segunrança dos dados alimentados nos processos da engenheria até o Power BI.
-          Responsável pela gestão de acessos e permissões de segurança (RLS/OLS) no tenant Microsoft Fabric. Desenvolvi aplicações write-back para consolidar a experiência de Self-Service BI, como o OkaCamp que automatiza cadastro e apuração de campanhas. Sou reconhecido pela entrega de painéis intuitivos e otimizados, que combinam design fluido com processamento rápido.
-          </p>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="relative">
-          <span
-            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-secondary"></span>
-          <p class="font-mono text-[11px] tracking-[0.2em] text-secondary">jan de 2025 - dez de 2025 · 1 ano</p>
-          <h3 class="mt-2 text-lg font-bold leading-tight">Analista de Dados Júnior · Okajima Distribuidora</h3>
-          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Analista de 2 das 3 unidades de negócio da empresa(BUs). Desenvolvi Dashboards, reports e apurações de campanhas e contratos comerciais. Participei da migração do Targit(Antigo
-              sistema de BI) para o Power BI que acelerou a entrega de relatórios em 70% e reduziu os custos de engenharia em 50%.
-          </p>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="relative">
-          <span class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-accent"></span>
-          <p class="font-mono text-[11px] tracking-[0.2em] text-accent">out de 2024 - dez de 2024 · 3 meses</p>
-          <h3 class="mt-2 text-lg font-bold leading-tight">Assistente de Dados · Okajima Distribuidora</h3>
-          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Criação e atualização das rotas comerciais da empresa. Foco na eficiência logistica do Rca até o ponto de venda. Plataformas: ROTEIRIZZE POLIBRAS.
-          </p>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="relative">
-          <span
-            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-muted-foreground"></span>
-          <p class="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">out de 2023 - out de 2024 · 1 ano 1 mês</p>
-          <h3 class="mt-2 text-lg font-bold leading-tight">Produtos e Serviços · Sea Telecom</h3>
-          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Fui Responsável pela Gestão de serviços de valor agragado(SVAs) e plataformas omnichannel (Matrix Brasil) e telefonia STFC. Desenvolvi relatórios e dashboards no Metabase usando SQL para análise e acompanhamento de dados. Ministrei treinamentos sobre os sistemas utilizados pela empresa, como MK Solutions ERP. Fiz a homologação de equipamentos: Roteadores e ONUs, garantindo a qualidade e conformidade dos dispositivos.
-          </p>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="relative">
-          <span
-            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-muted-foreground"></span>
-          <p class="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">mar de 2023 - nov de 2023 · 9 meses</p>
-          <h3 class="mt-2 text-lg font-bold leading-tight">Auxiliar de SAC · Sea Telecom</h3>
-          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Prestava suporte técnico N2 a clientes com redes complexas, aplicava treinamentos de atendimento, utilização dos sistemas da empresa: MK Solutions ERP e Geosite: para a equipe de SAC e comercial, e orientação ao time técnico de instalação de redes complexas.
-          </p>
-        </div>
-
-        <!-- Item 6 -->
-        <div class="relative">
-          <span
-            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-muted-foreground"></span>
-          <p class="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">ago de 2022 - mar de 2023 · 8 meses</p>
-          <h3 class="mt-2 text-lg font-bold leading-tight">Estagiário de SAC · Sea Telecom</h3>
-          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Realizava suporte técnico N1 a todos os clientes efetuando processos cadastrais, técnicos e administrativos.
-          </p>
-        </div>
-
-        <!-- Item 7 -->
-        <div class="relative">
-          <span
-            class="absolute -left-[2.31rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-background bg-muted-foreground"></span>
-          <p class="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">abr de 2021 - mar de 2022 · 1 ano</p>
-          <h3 class="mt-2 text-lg font-bold leading-tight">Aprendiz Administrativo · Nazária Distribuidora</h3>
-          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Fiz o programa de aprendiz administrativo da parceria Nazária / Senac. Atuei em 3 setores: Trade Marketing, criava planilhas de vendas e realizava apurações comerciais; na Recepção, prestei suporte a rotinas administrativas; e na Logística, trabalhei na organização e embalagem de medicamentos e bonificações.
-          </p>
-        </div>
-      </div>
-
-      <p class="mt-10 font-mono text-xs text-muted-foreground">
-        Acesse o currículo completo:
-        <a href="assets/Ulisses de Pinho - Cv Atualizado.pdf" download
-          class="text-primary underline underline-offset-4">
-          baixar em PDF ↗
-        </a>
-      </p>
-    </div>
   </section>
 
   <!-- CONTATO -->

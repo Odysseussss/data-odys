@@ -104,6 +104,10 @@ class ProjectCard extends HTMLElement {
     const title = this.getAttribute('title') || '';
     const tech = this.getAttribute('tech') || '';
     const image = this.getAttribute('image') || '';
+    const images = (this.getAttribute('images') || image)
+      .split(',')
+      .map(path => path.trim())
+      .filter(Boolean);
     const bodyContent = this.innerHTML;
 
     this.className = 'project-card block cursor-pointer h-full';
@@ -113,14 +117,14 @@ class ProjectCard extends HTMLElement {
       <article class="group relative overflow-hidden rounded-2xl border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_0_50px_hsl(var(--primary)/0.1)] h-full flex flex-col justify-between">
         <div>
           <div class="flex items-start justify-between gap-3">
-            <h3 class="text-lg font-bold leading-tight">${title}</h3>
+            <h3 class="text-lg font-bold leading-tight text-foreground">${title}</h3>
             <span class="shrink-0 rounded-full border border-primary/30 px-2.5 py-0.5 font-mono text-[9px] tracking-[0.15em] text-primary">
               ${tag}
             </span>
           </div>
-          ${image ? `<img src="${image}" alt="${title}" class="mt-4 h-48 w-full rounded-xl object-cover object-top" />` : ''}
+          ${image ? `<div class="relative mt-4 aspect-video w-full overflow-hidden rounded-xl bg-muted"><img src="${image}" alt="${title}" class="h-full w-full object-cover object-top" /></div>` : ''}
           <p class="mt-2 font-mono text-[11px] text-accent">${tech}</p>
-          <div class="mt-4 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+          <div class="mt-4 text-sm leading-relaxed text-muted-foreground">
             ${bodyContent}
           </div>
         </div>
@@ -133,27 +137,51 @@ class ProjectCard extends HTMLElement {
     this.addEventListener('click', (e) => {
       // Impede que links dentro do card fechem ou abram o modal diretamente
       if (e.target.closest('a')) return;
-      openProjectModal({ title, tag, tech, image, content: bodyContent });
+      openProjectModal({ title, tag, tech, images, content: bodyContent });
     });
   }
 }
 customElements.define('project-card', ProjectCard);
 
-// Modal Global dos Projetos (com Animação Scale/Pop)
-function openProjectModal({ title, tag, tech, image, content }) {
+// ================= REUTILIZÁVEL: SISTEMA DE MODAIS DE PROJETOS =================
+// Padronizado como .glass / .bg-grid / dialog.project-dialog em style.css
+// Uso: openProjectModal('modal-1') para <dialog> (PT) ou openProjectModal({title, tag...}) para <project-card> (EN)
+const BodyScroll = {
+  lock() { document.body.style.overflow = 'hidden'; },
+  unlock() { document.body.style.overflow = ''; }
+};
+
+function attachDialogBackdropClose(dlg, id) {
+  const handler = (e) => { if (e.target === dlg) closeProjectModal(id); };
+  dlg._backdropHandler && dlg.removeEventListener('click', dlg._backdropHandler);
+  dlg._backdropHandler = handler;
+  dlg.addEventListener('click', handler);
+  dlg.addEventListener('close', () => BodyScroll.unlock(), { once: true });
+}
+
+function openDialogModal(id) {
+  const dlg = document.getElementById(id);
+  if (!dlg) { console.warn(`[openProjectModal] Dialog #${id} não encontrado`); return; }
+  if (typeof dlg.showModal === 'function') {
+    if (!dlg.open) { dlg.showModal(); BodyScroll.lock(); attachDialogBackdropClose(dlg, id); }
+  } else {
+    dlg.setAttribute('open', ''); BodyScroll.lock();
+  }
+}
+
+function openLegacyCardModal({ title, tag, tech, image, images = [], content }) {
   let existingModal = document.getElementById('project-modal-container');
   if (existingModal) existingModal.remove();
-
-  // Desativa scroll do fundo
-  document.body.style.overflow = 'hidden';
+  BodyScroll.lock();
+  const galleryImages = images.length ? images : (image ? [image] : []);
+  const hasGallery = galleryImages.length > 1;
 
   const modal = document.createElement('div');
   modal.id = 'project-modal-container';
   modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md transition-opacity duration-300 opacity-0';
-  
   modal.innerHTML = `
     <div id="project-modal-backdrop" class="absolute inset-0"></div>
-    <div class="modal-box relative w-full max-w-2xl max-h-[90vh] bg-card border border-border rounded-2xl shadow-2xl p-6 sm:p-8 overflow-y-auto z-10 flex flex-col justify-between transform scale-90 opacity-0 transition-all duration-300 ease-out">
+    <div class="modal-box relative w-full max-w-2xl max-h-[90vh] bg-card border border-border rounded-2xl shadow-2xl p-6 sm:p-8 overflow-y-auto z-10 flex flex-col justify-between transform scale-90 opacity-0 transition-all duration-300 ease-out text-card-foreground">
       <div>
         <div class="flex items-start justify-between gap-4 border-b border-border pb-4">
           <div>
@@ -164,46 +192,36 @@ function openProjectModal({ title, tag, tech, image, content }) {
             <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
           </button>
         </div>
-        
         <div class="mt-6 space-y-4">
-          ${image ? `
-            <img id="modal-main-img" src="${image}" alt="${title}" class="w-full h-64 sm:h-72 rounded-xl object-cover object-top border border-border shadow-md transition-all duration-200" />
-            <div class="grid grid-cols-3 gap-2">
-              <img src="${image}" alt="Thumb 1" class="gallery-thumb w-full h-20 rounded-lg object-cover object-top border border-primary cursor-pointer transition-all hover:opacity-80" />
-              <img src="assets/foto_time.png" alt="Thumb 2" class="gallery-thumb w-full h-20 rounded-lg object-cover object-top border border-border cursor-pointer transition-all hover:opacity-80" />
-              <img src="assets/fluxo_camps.png" alt="Thumb 3" class="gallery-thumb w-full h-20 rounded-lg object-cover object-top border border-border cursor-pointer transition-all hover:opacity-80" />
+          ${galleryImages.length ? `
+            <div class="relative">
+              <img id="modal-main-img" src="${galleryImages[0]}" alt="${title}" class="mx-auto block h-auto max-h-[65vh] w-full rounded-xl object-contain object-top border border-border shadow-md transition-all duration-200" />
+              ${hasGallery ? `
+                <button id="gallery-prev" type="button" aria-label="Ver foto anterior" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-background/80 px-3 py-2 text-lg text-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground">‹</button>
+                <button id="gallery-next" type="button" aria-label="Ver próxima foto" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-background/80 px-3 py-2 text-lg text-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground">›</button>
+              ` : ''}
             </div>
           ` : ''}
         </div>
-        
         <p class="mt-4 font-mono text-xs text-accent">${tech}</p>
-        
-        <div class="mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground space-y-3">
-          ${content}
-        </div>
+        <div class="mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground space-y-3">${content}</div>
       </div>
-      
-      <div class="mt-8 pt-4 border-t border-border flex items-center justify-between font-mono text-xs text-muted-foreground">
-        <span>Ulisses de Pinho · Detalhes do Projeto</span>
+      <div class="mt-8 flex items-center justify-end border-t border-border pt-4">
         <button id="modal-close-footer" class="rounded-lg bg-primary/10 border border-primary/30 px-4 py-2 text-primary hover:bg-primary/20 transition-colors">Fechar</button>
       </div>
     </div>
   `;
-
   document.body.appendChild(modal);
 
-  // Troca das Imagens da Galeria
   const mainImg = modal.querySelector('#modal-main-img');
-  const thumbs = modal.querySelectorAll('.gallery-thumb');
-  thumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      if (mainImg) mainImg.src = thumb.src;
-      thumbs.forEach(t => t.classList.replace('border-primary', 'border-border'));
-      thumb.classList.replace('border-border', 'border-primary');
-    });
-  });
+  let currentImage = 0;
+  const showImage = (index) => {
+    currentImage = (index + galleryImages.length) % galleryImages.length;
+    if (mainImg) mainImg.src = galleryImages[currentImage];
+  };
+  modal.querySelector('#gallery-prev')?.addEventListener('click', () => showImage(currentImage - 1));
+  modal.querySelector('#gallery-next')?.addEventListener('click', () => showImage(currentImage + 1));
 
-  // Animação de Entrada ("pra frente")
   requestAnimationFrame(() => {
     modal.classList.remove('opacity-0');
     const box = modal.querySelector('.modal-box');
@@ -211,28 +229,34 @@ function openProjectModal({ title, tag, tech, image, content }) {
     box.classList.add('scale-100', 'opacity-100');
   });
 
-  // Função de Fechar com Animação de Saída
   const closeModal = () => {
     const box = modal.querySelector('.modal-box');
     modal.classList.add('opacity-0');
     box.classList.remove('scale-100', 'opacity-100');
     box.classList.add('scale-90', 'opacity-0');
-
-    setTimeout(() => {
-      modal.remove();
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', escHandler);
-    }, 200);
+    setTimeout(() => { modal.remove(); BodyScroll.unlock(); window.removeEventListener('keydown', escHandler); }, 200);
   };
 
   modal.querySelector('#project-modal-backdrop').addEventListener('click', closeModal);
   modal.querySelector('#modal-close-btn').addEventListener('click', closeModal);
   modal.querySelector('#modal-close-footer').addEventListener('click', closeModal);
-
-  const escHandler = (e) => {
-    if (e.key === 'Escape') closeModal();
-  };
+  const escHandler = (e) => { if (e.key === 'Escape') closeModal(); };
   window.addEventListener('keydown', escHandler);
+}
+
+function openProjectModal(data) {
+  if (typeof data === 'string') return openDialogModal(data);
+  if (data && typeof data === 'object') return openLegacyCardModal(data);
+  console.warn('[openProjectModal] dados inválidos', data);
+}
+
+function closeProjectModal(id) {
+  const dlg = document.getElementById(id);
+  if (!dlg) return;
+  if (dlg.tagName === 'DIALOG' && dlg.open) dlg.close();
+  else if (dlg.hasAttribute('open')) dlg.removeAttribute('open');
+  BodyScroll.unlock();
+  if (dlg._backdropHandler) { dlg.removeEventListener('click', dlg._backdropHandler); delete dlg._backdropHandler; }
 }
 
 // Componente: InfoCard

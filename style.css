@@ -98,6 +98,10 @@ body {
   border-bottom: 1px solid hsl(var(--border));
 }
 
+info-card {
+  display: block;
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-12px); }
@@ -161,12 +165,17 @@ body {
   }
 }
 
-/* Animação do Dialog Nativo */
+/* Reutilizável: Dialog de Projeto (padronizado como .glass e .bg-grid) */
 dialog.project-dialog {
   background: transparent;
   border: none;
   padding: 1rem;
   margin: auto;
+  color: hsl(var(--card-foreground));
+}
+
+dialog.project-dialog .dialog-content {
+  color: hsl(var(--card-foreground));
 }
 
 /* Estado Fechado */
