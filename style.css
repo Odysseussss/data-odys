@@ -92,7 +92,7 @@ body {
 }
 
 .glass {
-  background: hsl(230 25% 9% / 0.6);
+  background: hsla(0, 0%, 6%, 0.6);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid hsl(var(--border));
@@ -100,6 +100,10 @@ body {
 
 info-card {
   display: block;
+}
+
+.stack-tech-card {
+  background-color: hsla(135, 7%, 22%, 0.75);
 }
 
 .linkedin-widget {

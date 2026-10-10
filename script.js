@@ -111,9 +111,10 @@ class TechCard extends HTMLElement {
   connectedCallback() {
     const icon = this.getAttribute('icon') || '';
     const name = this.getAttribute('name') || '';
+    const cardBackground = this.closest('#stack') ? 'stack-tech-card' : 'bg-card/40';
 
     this.innerHTML = `
-      <div class="group flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/40 p-5 text-center transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-primary/5">
+      <div class="group flex flex-col items-center gap-3 rounded-2xl border border-border ${cardBackground} p-5 text-center transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-primary/5">
         <img src="${icon}" alt="${name}" class="h-9 w-9 object-contain" />
         <span class="text-xs font-semibold leading-tight">${name}</span>
       </div>
